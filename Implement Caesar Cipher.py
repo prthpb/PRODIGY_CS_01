@@ -9,7 +9,7 @@ def caesar_cipher(text: str, shift: int) -> str:
     for ch in text:
         if ch.isalpha():
             base = ord('A') if ch.isupper() else ord('a')
-            # normalize to 0–25, apply shift, wrap via mod 26, convert back
+            
             offset = (ord(ch) - base + shift) % 26
             result.append(chr(base + offset))
         else:
@@ -22,7 +22,7 @@ def main():
     print("Caesar Cipher")
     print("-------------")
 
-    # ask for mode
+
     while True:
         mode = input("Type 'e' to encrypt, 'd' to decrypt: ").strip().lower()
         if mode in ('e', 'd'):
@@ -30,7 +30,7 @@ def main():
         print("Please enter 'e' or 'd'.")
 
     msg = input("Enter your message: ")
-    # ensure shift is integer
+
     while True:
         try:
             shift_val = int(input("Enter shift value (e.g. 3): "))
@@ -38,7 +38,7 @@ def main():
         except ValueError:
             print("That's not a valid integer. Try again.")
 
-    # for decryption, just invert the shift
+    
     if mode == 'd':
         shift_val = -shift_val
 
